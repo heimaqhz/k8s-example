@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness-http
+spec:
+  containers:
+  - name: liveness
+    image: gcr.io/google_containers/liveness
+    args:
+    - /server
+    livenessProbe: # HTTP Response Code in 200-400间表示正常
+      httpGet:
+        path: /healthz
+        port: 8080
+        httpHeaders:
+          - name: X-Custom-Header
+            value: Awesome
+      initialDelaySeconds: 3 # 等待3s后执行探针
+      periodSeconds: 3  # 每隔3s检查一次
