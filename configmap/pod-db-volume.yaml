@@ -1,22 +1,21 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  labels:
-    name: db-volume
-  name: db-volume
+  name: mypod
 spec:
+  containers:
+  - name: mypod
+    image: redis
+    volumeMounts:
+    - name: foo
+      mountPath: "/etc/foo"
   volumes:
-  - name: secrets
+  - name: foo
     secret:
       secretName: mysecret
-  containers:
-  - image: nginx
-    name: db
-    volumeMounts:
-    - name: secrets
-      mountPath: "/etc/secrets"
-      readOnly: true
-    ports:
-    - name: cp
-      containerPort: 5432
-      hostPort: 5432
+      items:
+      - key: username
+        path: my-group/my-username
+        # file mode 0777
+        mode: 511 
+
