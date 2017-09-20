@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-service-clusterip
+  name: nginx-service-clusterip # default is clusterip
 spec:
   selector:
     app: nginx

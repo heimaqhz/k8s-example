@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-internal
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "internal"
+spec:
+  rules:
+  - host: boo.jiannc.com
+    http:
+      paths:
+      - backend:
+          serviceName: nginx
+          servicePort: 80
