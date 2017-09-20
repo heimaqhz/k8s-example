@@ -4,7 +4,7 @@ metadata:
   name: test-pod
 spec:
   containers:
-    - name: test-container
+    - name: test-pod-env
       image: gcr.io/google_containers/busybox
       command: [ "/bin/sh", "-c", "env" ]
       env:
