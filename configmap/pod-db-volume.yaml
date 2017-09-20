@@ -2,15 +2,15 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    name: db
-  name: db
+    name: db-volume
+  name: db-volume
 spec:
   volumes:
   - name: secrets
     secret:
       secretName: mysecret
   containers:
-  - image: gcr.io/my_project_id/pg:v1
+  - image: nginx
     name: db
     volumeMounts:
     - name: secrets

@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    name: db
-  name: db
+    name: db-key
+  name: db-key
 spec:
   volumes:
   - name: secrets
